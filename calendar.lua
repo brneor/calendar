@@ -41,10 +41,10 @@ function calendar:init(args)
     -- first day of week: monday=1, …, sunday=7
     self.fdow       = args.fdow       or 1
     -- notification area:
-    self.html       = args.html       or '<span font_desc="monospace">\n%s</span>'
+    self.html       = args.html       or '<span font_desc="montecarlo, monospace">\n%s</span>'
     -- highlight current date:
     self.today      = args.today      or '<b><span color="#00ff00">%2i</span></b>'
-    self.anyday     = args.anyday     or '%2i'
+    self.anyday     = args.anyday     or '<span color="cccccc">%2i</span>'
     self.page_title = args.page_title or '%B %Y'    -- month year
     self.col_title  = args.col_title  or '%a '      -- weekday
     -- Date equality check is based on day_id. We deliberately ignore the year
@@ -77,9 +77,10 @@ function calendar:page(month, year)
     end
 
     -- print empty space before first day
+    -- %V is the weeknumber
     page = page .. "\n" .. format_date(" %V", tA)
     for column = 1, colA do
-        page = page .. "   -"
+        page = page .. "    "
     end
 
     -- iterate all days of the month
@@ -100,7 +101,7 @@ function calendar:page(month, year)
     end
 
     for column = column, 6 do
-        page = page .. "   -"
+        page = page .. "    "
     end
 
     return page_title, self.html:format(page)
