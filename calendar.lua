@@ -43,7 +43,7 @@ function calendar:init(args)
     -- notification area:
     self.html       = args.html       or '<span font_desc="montecarlo, monospace">\n%s</span>'
     -- highlight current date:
-    self.today      = args.today      or '<b><span color="#00ff00">%2i</span></b>'
+    self.today      = args.today      or '<b><span color="#00A088">%2i</span></b>'
     self.anyday     = args.anyday     or '<span color="#cccccc">%2i</span>'
     self.page_title = args.page_title or '%B %Y'    -- month year
     self.col_title  = args.col_title  or '%a '      -- weekday
